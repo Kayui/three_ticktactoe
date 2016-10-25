@@ -1,11 +1,5 @@
 # Initial Design of TicTacToe
 
-#### Feature List:
-
- * Feature 1
- * Feature 2
- * Feature 3
-
 ### Description
 TicTacToe fyrir Hugbnaðarfræði, mjög flott og allt það.
 
