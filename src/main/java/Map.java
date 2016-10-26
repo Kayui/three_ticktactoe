@@ -45,7 +45,60 @@ public class Map{
 	return true;
     }
 
-   public int checkForWin(int player, int rowOfInsert, int colOfInsert){	
+   public int checkForWin(int player, int point){
+	int row = (point - 1 ) / 3;
+	int col = (point - 1) % 3;
+	boolean won = true;
+	for(int i = 0; i < 3; i++){
+            if(_map[row][i]!=player){
+		won = false;
+	    }
+	}
+	if(won){
+	    return winner(player);
+	}
+	won = true;
+	for(int i = 0; i < 3; i++){
+            if(_map[i][col]!=player){
+                won = false;
+            }
+        }
+        if(won){
+            return winner(player);
+        }
+	won = true;
+	if(row == col){
+	    for(int i = 0; i < 3; i++){
+                if(_map[i][i]!=player){
+                    won = false;
+                }
+            }
+            if(won){
+                return winner(player);
+            }
+	}
+	won = true;
+        if((row + col) == 2){
+            for(int i = 0; i < 3; i++){
+                if(_map[i][2 - i]!=player){
+                    won = false;
+                }
+            }
+            if(won){
+                return winner(player);
+            }
+        }
+	if(mapIsFull()){
+	    return GameStatus.DRAW;
+	}	
    	return GameStatus.UNDECIDED;
+   }
+
+   public int winner(int player){
+	if(player == 1){
+	    return GameStatus.PLAYER1_WON;
+	}else{
+	    return GameStatus.PLAYER2_WON;
+	}
    }
 }

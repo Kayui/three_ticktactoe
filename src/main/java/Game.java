@@ -22,12 +22,16 @@ public class Game{
 	board = new Map();
    }
    public void gameLoop(){ // the game loop
-	while(status == GameStatus.UNDECIDED){
-	//game goes on
-	}
+	//check who plays
+	//get input
+	//place mark
+	//check for end of game
+	//switch player
+	//repeat
+	
    }
    public int checkStatus(){ // returns GameStatus
       	//return status;
-      	return 0;
-   }
+     	return 0;
+  }
 }
