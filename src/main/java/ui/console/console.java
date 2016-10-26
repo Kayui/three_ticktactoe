@@ -27,7 +27,7 @@ public class console extends ui {
     public MapPoint pickOption(Map[] map) {
            return new MapPoint(0,0);
     }
-    public void displayMap(Map[] map) {
+    public void displayMap(Map map) {
 	// TODO: Hardcoding the withd*height of the map
 	// Should be fixed ASAP! Or else it will be rather
 	// difficult to maintain this code when we go 
@@ -36,7 +36,10 @@ public class console extends ui {
 		if (i == 0 || i % 3 == 0) {
 			System.out.println("");
 		}
-		System.out.print(
+		int point = map.getPoint(i);
+		char symbol = point == GameStatus.PLAYER1_WON ? GameStatus.CROSS : 
+		point == GameStatus.PLAYER2_WON ? GameStatus.CIRCLE : ' ';
+		System.out.print(symbol+'\t');
 	} 
     }
     public void displayMaps(Map[] map) {
