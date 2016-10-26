@@ -23,7 +23,7 @@ public class PlayerTest {
        assertEquals(1, p.getGamesLost());
     }
 
-       @Test public void testGetGamesLost() {
+    @Test public void testGetGamesLost() {
 	HumanPlayer p =	new HumanPlayer();
         assertEquals(0, p.getGamesLost());
     }

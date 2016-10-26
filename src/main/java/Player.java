@@ -28,9 +28,9 @@ public abstract class Player{
     public int getGamesLost(){
 	return this.gamesLost;
     }
-
+    
     public int getGamesPlayed(){
 	return this.gamesPlayed;
-    }	
+    }
 }
 
