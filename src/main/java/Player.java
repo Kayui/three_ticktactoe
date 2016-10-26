@@ -1,37 +1,36 @@
 public abstract class Player{
-    public int getPoint(){ // Get user input or computer input
-        return 0;
-    }
+    protected int gamesWon;
+    protected int gamesLost;
+    protected int gamesPlayed;
 
-    protected int games_played(){
-	return 0;
-    }
+    public Player(){
+    	this.gamesWon = 0;
+	this.gamesLost = 0;
+	this.gamesPlayed = 0;
+    } 
 
-    protected int games_won(){
-    	return 0;
-    }
-
-    protected int games_lost(){
-    	return 0;
-    }
+    public abstract int getPoint(); // Get user input or computer input
 
     public void gameWon(){
-	
+	this.gamesPlayed += 1;
+	this.gamesWon += 1;
     }
 
     public int getGamesWon(){
-	return 0;
+	return this.gamesWon;
     }
 
     public void gameLost(){
+    	this.gamesPlayed += 1;
+	this.gamesLost += 1;
     }
 
     public int getGamesLost(){
-	return 0;
+	return this.gamesLost;
     }
 
     public int getGamesPlayed(){
-	return 0;
+	return this.gamesPlayed;
     }	
 }
 
