@@ -37,6 +37,22 @@ public class MapTest {
 
     @Test public void testCheckForWin() {
         Map map = new Map();
-        assertEquals(GameStatus.UNDECIDED, map.checkForWin(1, 0, 0));
+        assertEquals(GameStatus.UNDECIDED, map.checkForWin(1, 1));
+    }
+	
+    @Test public void testCheckForWinExpectedWin() {
+        Map map = new Map();
+	map.setMove(1,1);
+        map.setMove(1,2);
+        map.setMove(1,3);
+        assertEquals(GameStatus.PLAYER1_WON, map.checkForWin(1, 3));
+    }
+
+    @Test public void testCheckForWinExpectedWin2() {
+        Map map = new Map();
+        map.setMove(2,1);
+        map.setMove(2,5);
+        map.setMove(2,9);
+        assertEquals(GameStatus.PLAYER2_WON, map.checkForWin(2, 9));
     }
 }

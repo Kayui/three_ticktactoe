@@ -45,7 +45,70 @@ public class Map{
 	return true;
     }
 
-   public int checkForWin(int player, int rowOfInsert, int colOfInsert){	
+   public int checkForWin(int player, int point){
+	int row = (point - 1 ) / 3;
+	int col = (point - 1) % 3;
+	boolean won = checkForVerticalWin(player, row);
+	if(won){
+	    return winner(player);
+	}
+	won = (checkForHorizontalWin(player, col) || checkForVerticalWin(player, row) || checkForDiagonalWin1(player, col, row) || checkForDiagonalWin2(player, col, row));
+        if(won){
+            return winner(player);
+	}
+	if(mapIsFull()){
+	    return GameStatus.DRAW;
+	}	
    	return GameStatus.UNDECIDED;
+   }
+   
+   public boolean checkForVerticalWin(int player, int row){
+       for(int i = 0; i < 3; i++){
+            if(_map[row][i]!=player){
+                return false;
+            }
+       }
+       return true;
+   }
+
+   public boolean checkForHorizontalWin(int player, int col){
+       for(int i = 0; i < 3; i++){
+            if(_map[i][col]!=player){
+                return false;
+            }
+       }
+       return true;
+   }
+
+   public boolean checkForDiagonalWin1(int player, int col, int row){
+       if(row == col){
+            for(int i = 0; i < 3; i++){
+                if(_map[i][i]!=player){
+                    return false;
+                }
+            }
+            return true;
+	}
+	return false;
+   }
+
+   public boolean checkForDiagonalWin2(int player, int col, int row){
+ 	if((row + col) == 2){
+            for(int i = 0; i < 3; i++){
+                if(_map[i][2 - i]!=player){
+                    return false;
+                }
+            }
+	    return true;
+	}
+	return false;      
+   }
+
+   public int winner(int player){
+	if(player == 1){
+	    return GameStatus.PLAYER1_WON;
+	}else{
+	    return GameStatus.PLAYER2_WON;
+	}
    }
 }
