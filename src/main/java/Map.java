@@ -35,13 +35,13 @@ public class Map{
     }
 
     public boolean mapIsFull(){
-        for(int[] rows : _map){
-	    for(int item : rows){
-            	if(fieldIsEmpty(item + 1)){
-                    return false;
-                }
+         for(int i = 0; i < ROWS; i++){
+            for(int j = 0; j < COLS; j++){
+                if(_map[i][j] == 0){
+		     return false;
+		}
             }
-	}
+        }
 	return true;
     }
 

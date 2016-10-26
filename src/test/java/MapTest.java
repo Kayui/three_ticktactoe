@@ -27,6 +27,14 @@ public class MapTest {
         assertEquals(false, map.mapIsFull());
     }
 
+    @Test public void testMapIsFullWithFullMap3x3() {
+        Map map = new Map();
+	for(int i = 1; i < 10; i++){
+            map.setMove(1,i);
+        }
+        assertEquals(true, map.mapIsFull());
+    }
+
     @Test public void testCheckForWin() {
         Map map = new Map();
         assertEquals(GameStatus.UNDECIDED, map.checkForWin(1, 0, 0));
