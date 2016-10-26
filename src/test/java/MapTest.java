@@ -14,6 +14,21 @@ public class MapTest {
  
     @Test public void testGetPoint() {
 	Map map = new Map();
-        assertEquals(0, map.getPoint(0));
+        assertEquals(0, map.getPoint(1));
+    }
+    
+    @Test public void testFieldIsEmpty() {
+        Map map = new Map();
+        assertEquals(true, map.fieldIsEmpty(1));
+    }
+
+    @Test public void testMapIsFull() {
+        Map map = new Map();
+        assertEquals(false, map.mapIsFull());
+    }
+
+    @Test public void testCheckForWin() {
+        Map map = new Map();
+        assertEquals(GameStatus.UNDECIDED, map.checkForWin(1, 0, 0));
     }
 }
