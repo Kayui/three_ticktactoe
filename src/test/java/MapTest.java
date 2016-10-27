@@ -34,6 +34,11 @@ public class MapTest {
         }
         assertEquals(true, map.mapIsFull());
     }
+	
+   @Test public void testWinner() {
+	Map map = new Map();
+        assertEquals(GameStatus.PLAYER2_WON, map.winner(2));
+    }
 
     @Test public void testCheckForWin() {
         Map map = new Map();

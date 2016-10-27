@@ -53,9 +53,9 @@ public class Map{
             return winner(player);
 	}
 	if(mapIsFull()){
-	    return Game.DRAW;
+	    return GameStatus.DRAW;
 	}	
-   	return Game.UNDECIDED;
+   	return GameStatus.UNDECIDED;
    }
    
    public boolean checkForVerticalWin(int player, int row){
@@ -102,9 +102,9 @@ public class Map{
 
    public int winner(int player){
 	if(player == 1){
-	    return Game.PLAYER1_WON;
+	    return GameStatus.PLAYER1_WON;
 	}else{
-	    return Game.PLAYER2_WON;
+	    return GameStatus.PLAYER2_WON;
 	}
    }
 }
