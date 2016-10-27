@@ -3,7 +3,7 @@ public class Map{
     public static final int COLS = 3;
     protected int[][] _map = new int[ROWS][COLS]; // An int with the map
     public void Map(){
-	this.init(3,3);
+	this.init(ROWS,COLS);
     }    
 
     public void init(int width, int height){
@@ -48,11 +48,7 @@ public class Map{
    public int checkForWin(int player, int point){
 	int row = (point - 1 ) / 3;
 	int col = (point - 1) % 3;
-	boolean won = checkForVerticalWin(player, row);
-	if(won){
-	    return winner(player);
-	}
-	won = (checkForHorizontalWin(player, col) || checkForVerticalWin(player, row) || checkForDiagonalWin1(player, col, row) || checkForDiagonalWin2(player, col, row));
+	boolean won = (checkForHorizontalWin(player, col) || checkForVerticalWin(player, row) || checkForDiagonalWin1(player, col, row) || checkForDiagonalWin2(player, col, row));
         if(won){
             return winner(player);
 	}

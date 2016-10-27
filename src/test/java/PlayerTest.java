@@ -2,11 +2,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PlayerTest {
-	
-    @Test public void testGames_played() {
-	HumanPlayer p = new HumanPlayer();
-        assertEquals(0, p.getGamesPlayed());
-    }
 
     @Test public void testGetGamesWon() {
 	HumanPlayer p =	new HumanPlayer();
@@ -31,5 +26,12 @@ public class PlayerTest {
     @Test public void testGetGamesPlayed(){
 	HumanPlayer p =	new HumanPlayer();
         assertEquals(0, p.getGamesPlayed());
+    }
+
+    @Test public void testGetGamesPlayed2(){
+        HumanPlayer p = new HumanPlayer();
+	p.gameWon();
+	p.gameLost();
+        assertEquals(2, p.getGamesPlayed());
     }
 }

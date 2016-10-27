@@ -1,16 +1,10 @@
 public class Game{
    private Map board;
-   private GameStatus status;
+   private int status;
    private Player p1;
    private Player p2;
    private Player currentPlayer;
-
-   public enum GameStatus{
-    	PLAYER1_WON,
-        PAYER2_WON,
-        DRAW,
-        UNDECIDED
-   }
+   
    public void Game(){ // Constructor
  	 init();
    }
@@ -31,7 +25,6 @@ public class Game{
 	
    }
    public int checkStatus(){ // returns GameStatus
-      	//return status;
-     	return 0;
+      	return status;
   }
 }
