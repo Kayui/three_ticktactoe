@@ -1,21 +1,19 @@
 public class Game{
    private Map board;
-   private GameStatus status;
+   private int status;
    private Player p1;
    private Player p2;
    private Player currentPlayer;
-
-   public enum GameStatus{
-    	PLAYER1_WON,
-        PAYER2_WON,
-        DRAW,
-        UNDECIDED
-   }
+   public static final int PLAYER1_WON = 1;
+   public static final int PLAYER2_WON = 2;
+   public static final int DRAW = 3;
+   public static final int UNDECIDED = 0;
+   
    public void Game(){ // Constructor
  	 init();
    }
    public void init(){ // init and reset
-   	status = GameStatus.UNDECIDED;
+   	status = UNDECIDED;
 	p1 = new HumanPlayer();
 	p2 = new HumanPlayer();
 	currentPlayer = p1;
@@ -31,7 +29,6 @@ public class Game{
 	
    }
    public int checkStatus(){ // returns GameStatus
-      	//return status;
-     	return 0;
+      	return status;
   }
 }
