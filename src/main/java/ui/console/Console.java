@@ -25,7 +25,7 @@ public class Console extends ui {
         return readInput.nextInt();
     }
     public MapPoint pickOption(Map[] map) {
-           return new MapPoint(0,0);
+           return new MapPoint(0,0,0);
     }
     public void displayMap(Map map) {
 	// TODO: Hardcoding the withd*height of the map
