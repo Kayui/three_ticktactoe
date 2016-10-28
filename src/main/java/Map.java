@@ -18,19 +18,19 @@ public class Map{
 	return 0;
     }
 
-    public boolean setMove(int player, int point){ // sets move, returns true if move is possible, else false
+    public boolean setMove(int player, MapPoint point){ // sets move, returns true if move is possible, else false
 	if (this.fieldIsEmpty(point)) {
-           this._map[(point - 1)/3][(point - 1)%3] = player;
+           this._map[point.x()][point.y()] = player;
            return true;     
 	}
         return false;
     }
 
-    public int getPoint(int point){ // returns point, 0 if unoccupied 1 if player1 2 if player 2
-       return this._map[(point - 1)/3][(point - 1)%3];
+    public int getPoint(MapPoint point){ // returns point, 0 if unoccupied 1 if player1 2 if player 2
+       return this._map[point.x()][point.y()];
     }
 
-    public boolean fieldIsEmpty(int point){ // returns point, 0 if unoccupied 1 if player1 2 if player 2
+    public boolean fieldIsEmpty(MapPoint point){ // returns point, 0 if unoccupied 1 if player1 2 if player 2
        return getPoint(point) == 0;
     }
 
@@ -45,10 +45,9 @@ public class Map{
 	return true;
     }
 
-   public int checkForWin(int player, int point){
-	int row = (point - 1 ) / 3;
-	int col = (point - 1) % 3;
-	boolean won = (checkForHorizontalWin(player, col) || checkForVerticalWin(player, row) || checkForDiagonalWin1(player, col, row) || checkForDiagonalWin2(player, col, row));
+   public int checkForWin(int player, MapPoint point){
+	boolean won = (checkForHorizontalWin(player, point.x()) || checkForVerticalWin(player, point.y()) 
+                || checkForDiagonalWin1(player, point.x(), point.y()) || checkForDiagonalWin2(player, point.x(), point.y()));
         if(won){
             return winner(player);
 	}

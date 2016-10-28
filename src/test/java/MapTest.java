@@ -9,17 +9,24 @@ public class MapTest {
 
     @Test public void testSetMove() {
 	Map map = new Map();
-        assertEquals(true, map.setMove(1,3));
+        assertEquals(true, map.setMove(1, new MapPoint(0, 0, 0));
     }
  
     @Test public void testGetPoint() {
 	Map map = new Map();
-        assertEquals(0, map.getPoint(1));
+	map.setMove(1, new MapPoint(0, 0, 1));
+        assertEquals(1, map.getPoint(new MapPoint(0, 0, 1)));
     }
     
     @Test public void testFieldIsEmpty() {
         Map map = new Map();
-        assertEquals(true, map.fieldIsEmpty(1));
+        assertEquals(true, map.fieldIsEmpty(new MapPoint(0, 0, 1)));
+    }
+
+    @Test public void testFieldIsNotEmpty() {
+	Map map = new Map();
+	map.setMove(1, new MapPoint(0, 0, 1));
+	assertEquals(false, map.fieldIsEmpty(new MapPoint(0, 0, 1)));
     }
 
     @Test public void testMapIsFull() {
@@ -29,9 +36,11 @@ public class MapTest {
 
     @Test public void testMapIsFullWithFullMap3x3() {
         Map map = new Map();
-	for(int i = 1; i < 10; i++){
-           map.setMove(1,i);
-        }
+	for(int x = 0, x < 3; x++){
+	    for(int y = 0; y < 3; y++){
+		map.setMove(1, new MapPoint(0, x, y));
+	    }
+	}
         assertEquals(true, map.mapIsFull());
     }
 	
@@ -42,22 +51,22 @@ public class MapTest {
 
     @Test public void testCheckForWin() {
         Map map = new Map();
-        assertEquals(GameStatus.UNDECIDED, map.checkForWin(1, 1));
+        assertEquals(GameStatus.UNDECIDED, map.checkForWin(1, new MapPoint(0, 0, 0)));
     }
 	
     @Test public void testCheckForWinExpectedWin() {
         Map map = new Map();
-	map.setMove(1,1);
-        map.setMove(1,2);
-        map.setMove(1,3);
-        assertEquals(GameStatus.PLAYER1_WON, map.checkForWin(1, 3));
+	map.setMove(1, new MapPoint(0, 0, 0));
+        map.setMove(1, new MapPoint(0, 0, 1));
+        map.setMove(1, new MapPoint(0, 0, 2));
+        assertEquals(GameStatus.PLAYER1_WON, map.checkForWin(1, new MapPoint(0, 0, 2)));
     }
 
-    @Test public void testCheckForWinExpectedWin2() {
+    @Test public void testCheckForWinDiagonal() {
         Map map = new Map();
-        map.setMove(2,1);
-        map.setMove(2,5);
-        map.setMove(2,9);
-        assertEquals(GameStatus.PLAYER2_WON, map.checkForWin(2, 9));
+        map.setMove(2, new MapPoint(0, 0, 0));
+        map.setMove(2, new MapPoint(0, 1, 1));
+        map.setMove(2, new MapPoint(0, 2, 2));
+        assertEquals(GameStatus.PLAYER2_WON, map.checkForWin(2, new MapPoint(0, 2, 2)));
     }
 }

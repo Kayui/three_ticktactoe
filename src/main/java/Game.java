@@ -65,11 +65,11 @@ public class Game{
 	}
     }
 
-    public void setMove(int player, int point){
+    public void setMove(int player, MapPoint point){
 	board.setMove(player, point);	
     }
 
-    public void checkForWin(int player, int point){
+    public void checkForWin(int player, MapPoint point){
 	this.status = board.checkForWin(player, point);
     }
 }

@@ -29,10 +29,10 @@ public class GameTest {
 	Player p2 = new ComputerPlayer();
 	Game game = new Game();
         game.init(p1, p2);
-        game.setMove(1,1);
-	game.setMove(1,2);
-        game.setMove(1,3);
- 	game.checkForWin(1,3);
+        game.setMove(1, new MapPoint(0, 0, 0));
+	game.setMove(1, new MapPoint(0, 0, 1));
+        game.setMove(1, new MapPoint(0, 0, 2));
+ 	game.checkForWin(1, new MapPoint(0, 0, 2));
 	game.resolve();
         assertEquals(1, p1.getGamesWon());
     }
