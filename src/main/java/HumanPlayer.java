@@ -1,17 +1,23 @@
 import java.util.Scanner;
 
 public class HumanPlayer extends Player {
-    public int getPoint(){ // Get user input or computer input 
+    public MapPoint getPoint(){ // Get user input or computer input 
 	Scanner scan = new Scanner(System.in);
-	int input;
-	HumanPlayer p = new HumanPlayer();
+	int x;
+	int y;
+	
 	do{
-	    input = scan.nextInt();
-	}while(!p.pointIsValid(input));
-	return input;	
+	    x = scan.nextInt();
+	}while(!this.pointIsValid(x));
+
+	do{
+	    y = scan.nextInt();
+	}while(!this.pointIsValid(y));
+
+	return new MapPoint(0, x, y);	
     }
 
     public boolean pointIsValid(int point){
-		return (point > 0 && point < 10);
+	return (point >= 0 && point < 3);
     } 
 }

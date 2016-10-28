@@ -11,7 +11,7 @@ public abstract class Player{
 	this.gamesDraw = 0;
     } 
 
-    public abstract int getPoint(); // Get user input or computer input
+    public abstract MapPoint getPoint(); // Get user input or computer input
 
     public void gameWon(){
 	gamePlayed();

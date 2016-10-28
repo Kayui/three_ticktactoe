@@ -12,7 +12,6 @@ public class TicTacToe {
     }
 	
     public TicTacToe() {
-		System.out.println("hey this kinda works");
     }
 
     public boolean testMethod() {
