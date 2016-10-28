@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class Console extends ui {
+    public Console() {
+    }
+
     public void msgbox(String message) {
         System.out.println(message);
     }
@@ -34,13 +37,23 @@ public class Console extends ui {
 	// corporate
 	for (int i = 0; i < 9; i++) {
 		if (i == 0 || i % 3 == 0) {
-			System.out.println("");
+			if(i != 0){
+				System.out.println("|");
+			}
+			else{
+				System.out.println();
+			}
+			System.out.print("-------------");
+			System.out.println();
 		}
 		int point = map.getPoint(new MapPoint(0, i / map.COLS, i % map.ROWS));
 		char symbol = point == GameStatus.PLAYER1_WON ? GameStatus.CROSS : 
 		point == GameStatus.PLAYER2_WON ? GameStatus.CIRCLE : ' ';
-		System.out.print(symbol+'\t');
+		System.out.print("| " + symbol + " ");
 	} 
+	System.out.println("|");
+	System.out.println("-------------");
+
     }
     public void displayMaps(Map[] map) {
         for (Map onemap : map) {

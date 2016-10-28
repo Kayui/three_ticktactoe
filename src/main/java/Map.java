@@ -9,7 +9,7 @@ public class Map{
     public void init(int width, int height){
 	for(int i = 0; i < width; i++){
 	    for(int j = 0; j < height; j++){
-		_map[i][j] = 0;
+		this._map[i][j] = 0;
 	    }
 	}
     }

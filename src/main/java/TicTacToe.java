@@ -8,7 +8,8 @@ import static java.lang.System.*;
 
 public class TicTacToe {
     public static void main(String [ ] args) {
-        
+        Console intrfc = new Console();
+	Game game = new Game();
     }
 	
     public TicTacToe() {
