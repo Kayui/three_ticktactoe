@@ -9,7 +9,7 @@ public class MapTest {
 
     @Test public void testSetMove() {
 	Map map = new Map();
-        assertEquals(true, map.setMove(1, new MapPoint(0, 0, 0));
+        assertEquals(true, map.setMove(1, new MapPoint(0, 0, 0)));
     }
  
     @Test public void testGetPoint() {
@@ -36,7 +36,7 @@ public class MapTest {
 
     @Test public void testMapIsFullWithFullMap3x3() {
         Map map = new Map();
-	for(int x = 0, x < 3; x++){
+	for(int x = 0; x < 3; x++){
 	    for(int y = 0; y < 3; y++){
 		map.setMove(1, new MapPoint(0, x, y));
 	    }

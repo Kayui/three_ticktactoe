@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 public class HumanPlayerTest {
     @Test public void testPointIsValid() {
         HumanPlayer p = new HumanPlayer();
-        assertEquals(true, p.pointIsValid(1));
+        assertEquals(true, p.pointIsValid(2));
     }
 
     @Test public void testPointIsValidExpectFalse() {
         HumanPlayer p = new HumanPlayer();
-        assertEquals(false, p.pointIsValid(10));
+        assertEquals(false, p.pointIsValid(123));
     }
 }

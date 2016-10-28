@@ -19,7 +19,7 @@ public class Game{
     public void gameLoop(){ // The game loop
 	while(status == GameStatus.UNDECIDED){
 	    int player = checkWhosTurn();
-	    int point = currentPlayer.getPoint();
+	    MapPoint point = currentPlayer.getPoint();
 	    setMove(player, point);
 	    checkForWin(player, point);
 	    switchPlayer();	

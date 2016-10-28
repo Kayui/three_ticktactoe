@@ -46,8 +46,8 @@ public class Map{
     }
 
    public int checkForWin(int player, MapPoint point){
-	boolean won = (checkForHorizontalWin(player, point.x()) || checkForVerticalWin(player, point.y()) 
-                || checkForDiagonalWin1(player, point.x(), point.y()) || checkForDiagonalWin2(player, point.x(), point.y()));
+	boolean won = (checkForHorizontalWin(player, point.y()) || checkForVerticalWin(player, point.x()) 
+                || checkForDiagonalWin1(player, point.y(), point.x()) || checkForDiagonalWin2(player, point.y(), point.x()));
         if(won){
             return winner(player);
 	}
