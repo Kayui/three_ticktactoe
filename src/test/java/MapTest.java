@@ -30,7 +30,7 @@ public class MapTest {
     @Test public void testMapIsFullWithFullMap3x3() {
         Map map = new Map();
 	for(int i = 1; i < 10; i++){
-            map.setMove(1,i);
+           map.setMove(1,i);
         }
         assertEquals(true, map.mapIsFull());
     }
