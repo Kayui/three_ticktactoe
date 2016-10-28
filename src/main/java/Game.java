@@ -22,7 +22,9 @@ public class Game{
 	//check for end of game
 	//switch player
 	//repeat
-	
+	while(status == GameStatus.UNDECIDED){
+	    	
+	}	
    }
    public int checkStatus(){ // returns GameStatus
       	return status;
