@@ -2,18 +2,20 @@ public abstract class Player{
     protected int gamesWon;
     protected int gamesLost;
     protected int gamesPlayed;
+    protected int gamesDraw;
 
     public Player(){
     	this.gamesWon = 0;
 	this.gamesLost = 0;
 	this.gamesPlayed = 0;
+	this.gamesDraw = 0;
     } 
 
     public abstract int getPoint(); // Get user input or computer input
 
     public void gameWon(){
-	this.gamesPlayed += 1;
-	this.gamesWon += 1;
+	gamePlayed();
+	this.gamesWon++;
     }
 
     public int getGamesWon(){
@@ -21,8 +23,8 @@ public abstract class Player{
     }
 
     public void gameLost(){
-    	this.gamesPlayed += 1;
-	this.gamesLost += 1;
+    	gamePlayed();
+	this.gamesLost++;
     }
 
     public int getGamesLost(){
@@ -31,6 +33,19 @@ public abstract class Player{
     
     public int getGamesPlayed(){
 	return this.gamesPlayed;
+    }
+
+    public void gameDraw(){
+        gamePlayed();
+        this.gamesDraw++;
+    }
+
+    public int getGamesDraw(){
+        return this.gamesDraw;
+    }
+
+    private void gamePlayed(){
+	this.gamesPlayed++;
     }
 }
 

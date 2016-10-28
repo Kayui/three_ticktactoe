@@ -32,6 +32,19 @@ public class PlayerTest {
         HumanPlayer p = new HumanPlayer();
 	p.gameWon();
 	p.gameLost();
-        assertEquals(2, p.getGamesPlayed());
+	p.gameDraw();
+        assertEquals(3, p.getGamesPlayed());
+    }
+
+    @Test public void testGamesDraw(){
+        HumanPlayer p = new HumanPlayer();
+        p.gameDraw();
+        p.gameDraw();
+        assertEquals(2, p.getGamesDraw());
+    }
+
+    @Test public void testGetGamesDraw(){
+        HumanPlayer p = new HumanPlayer();
+        assertEquals(0, p.getGamesDraw());
     }
 }
