@@ -16,6 +16,7 @@ public class Game{
 	this.intrfc = _intrfc;
         this.currentPlayer = p1;
         this.board = new Map();
+	this.intrfc.displayMap(board);
     }
 
     public void gameLoop(){ // The game loop
