@@ -16,7 +16,7 @@ public class Game{
 	this.intrfc = _intrfc;
         this.currentPlayer = p1;
         this.board = new Map();
-	this.intrfc.displayMap(board);
+	gameLoop();
     }
 
     public void gameLoop(){ // The game loop
@@ -25,6 +25,7 @@ public class Game{
 	    MapPoint point = currentPlayer.getPoint();
 	    setMove(player, point);
 	    checkForWin(player, point);
+	    this.intrfc.displayMap(board);
 	    switchPlayer();	
 	}
 	resolve();	
