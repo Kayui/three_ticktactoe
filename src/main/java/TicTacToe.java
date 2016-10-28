@@ -8,7 +8,11 @@ import static java.lang.System.*;
 
 public class TicTacToe {
     public static void main(String [ ] args) {
-        
+        Console intrfc = new Console();
+	Game game = new Game();
+	ComputerPlayer p1 = new ComputerPlayer();
+	ComputerPlayer p2 = new ComputerPlayer();
+	game.init(p1, p2, intrfc);
     }
 	
     public TicTacToe() {

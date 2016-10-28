@@ -4,16 +4,19 @@ public class Game{
     private Player p1;
     private Player p2;
     private Player currentPlayer;
-   
+    private ui intrfc;   
+
     public void Game(){ // Constructor
     }
 
-    public void init(Player p1, Player p2){ // Init and reset
+    public void init(Player p1, Player p2, ui _intrfc){ // Init and reset
         this.status = GameStatus.UNDECIDED;
         this.p1 = p1;
         this.p2 = p2;
+	this.intrfc = _intrfc;
         this.currentPlayer = p1;
         this.board = new Map();
+	this.intrfc.displayMap(board);
     }
 
     public void gameLoop(){ // The game loop

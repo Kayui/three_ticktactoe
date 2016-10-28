@@ -11,7 +11,7 @@ public class GameTest {
 	Player p1 = new ComputerPlayer();
         Player p2 = new ComputerPlayer();
         Game game = new Game();
-        game.init(p1, p2);
+        game.init(p1, p2, new Console());
 	assertEquals(1, game.checkWhosTurn());
     }
     
@@ -19,7 +19,7 @@ public class GameTest {
         Player p1 = new ComputerPlayer();
         Player p2 = new ComputerPlayer();
         Game game = new Game();
-        game.init(p1, p2);
+        game.init(p1, p2, new Console());
         game.switchPlayer();
         assertEquals(2, game.checkWhosTurn());
     }
@@ -28,7 +28,7 @@ public class GameTest {
         Player p1 = new ComputerPlayer();
 	Player p2 = new ComputerPlayer();
 	Game game = new Game();
-        game.init(p1, p2);
+        game.init(p1, p2, new Console());
         game.setMove(1, new MapPoint(0, 0, 0));
 	game.setMove(1, new MapPoint(0, 0, 1));
         game.setMove(1, new MapPoint(0, 0, 2));
