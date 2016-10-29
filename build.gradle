@@ -16,6 +16,7 @@ mainClassName = "TicTacToe"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use 'jcenter' for resolving your dependencies.
@@ -24,7 +25,7 @@ repositories {
 }
 
 test {
-	testLogging.showStandardStreams = true
+testLogging.showStandardStreams = true
 }
 
 // In this section you declare the dependencies for your production and test code
@@ -41,28 +42,29 @@ dependencies {
 task stage{
     dependsOn installDist
 }
-task codeCoverageReport(type: JacocoReport) {
-    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 
-    subprojects.each {
-        sourceSets it.sourceSets.main
-    }
+// JaCoCo
+jacoco {
+    toolVersion = "0.7.6.201602180812"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+    applyTo run
+}
 
+jacocoTestReport {
     reports {
-        xml.enabled true
-        xml.destination "${buildDir}/reports/jacoco/report.xml"
-        html.enabled true
+        xml.enabled false
         csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
     }
+}
+
+task codeCoverageReport(type:JacocoReport){
+    executionData run
+    sourceSets sourceSets.main
 }
 
 run{
     standardInput = System.in
 }
-jacocoTestReport {
-    reports {
-        xml.enabled true
-	html.enabled true
-    }
-}
+
 
