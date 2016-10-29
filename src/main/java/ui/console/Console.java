@@ -40,8 +40,8 @@ public class Console extends ui {
 	// difficult to maintain this code when we go 
 	// corporate
 	
-	for(int x = 0; x < 3; x++){
-		for(int y = 0; y < 3; y++){
+	for(int y = 0; y < 3; y++){
+		for(int x = 0; x < 3; x++){
 			int point = map.getPoint(new MapPoint(0, x, y));
 			char symbol = point == GameStatus.PLAYER1_WON ? GameStatus.CROSS : 
 			point == GameStatus.PLAYER2_WON ? GameStatus.CIRCLE : ' ';
