@@ -11,4 +11,10 @@ public class HumanPlayerTest {
         HumanPlayer p = new HumanPlayer();
         assertEquals(false, p.pointIsValid(123));
     }
+
+    @Test public void testGetPoint() {
+        HumanPlayer p = new HumanPlayer();
+	//how to test??
+        //assertEquals(1, p.getPoint());
+    }
 }
