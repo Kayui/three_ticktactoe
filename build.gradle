@@ -10,9 +10,12 @@
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'jacoco'
 
 mainClassName = "TicTacToe"
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use 'jcenter' for resolving your dependencies.
@@ -38,6 +41,28 @@ dependencies {
 task stage{
     dependsOn installDist
 }
+task codeCoverageReport(type: JacocoReport) {
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled true
+        xml.destination "${buildDir}/reports/jacoco/report.xml"
+        html.enabled true
+        csv.enabled false
+    }
+}
+
 run{
     standardInput = System.in
 }
+jacocoTestReport {
+    reports {
+        xml.enabled true
+	html.enabled true
+    }
+}
+

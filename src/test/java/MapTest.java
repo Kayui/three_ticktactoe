@@ -75,4 +75,18 @@ public class MapTest {
         map.setMove(2, new MapPoint(0, 2, 2));
         assertEquals(GameStatus.PLAYER2_WON, map.checkForWin(2, new MapPoint(0, 2, 2)));
     }
+	
+     @Test public void testInit() {
+        Map map = new Map();
+        assertEquals(0, map.getPoint(new MapPoint(0, 0, 0)));
+	assertEquals(0, map.getPoint(new MapPoint(0, 0, 1)));
+	assertEquals(0, map.getPoint(new MapPoint(0, 0, 2)));
+	assertEquals(0, map.getPoint(new MapPoint(0, 1, 0)));
+	assertEquals(0, map.getPoint(new MapPoint(0, 1, 1)));
+	assertEquals(0, map.getPoint(new MapPoint(0, 1, 2)));
+	assertEquals(0, map.getPoint(new MapPoint(0, 2, 0)));
+	assertEquals(0, map.getPoint(new MapPoint(0, 2, 1)));
+	assertEquals(0, map.getPoint(new MapPoint(0, 2, 2)));
+    }
 }
+
