@@ -6,48 +6,46 @@ public class Game{
     private Player currentPlayer;
     private ui intrfc;   
 
-    public void Game(){ // Constructor
-    
-    }
+    public void Game(){}
 
     public void init(Player p1, Player p2, ui _intrfc){ // Init and reset
         this.status = GameStatus.UNDECIDED;
         this.p1 = p1;
         this.p2 = p2;
         this.currentPlayer = p1;
-	this.intrfc = _intrfc;
+	    this.intrfc = _intrfc;
         this.board = new Map();
     }
 
     public void start() {
-	gameLoop();
+	    gameLoop();
     }
 
     private void gameLoop(){ // The game loop
-	while(status == GameStatus.UNDECIDED){
-	    // Check who has the turn
-	    this.intrfc.displayMap(board);
-	    int player = checkWhosTurn();
-	    if(player == 1){
-	        this.intrfc.msgbox("Player 1 has the turn");
-	    }
-	    else{
-	        this.intrfc.msgbox("Player 2 has the turn");
-	    }
+        while(status == GameStatus.UNDECIDED){
+            // Check who has the turn
+            this.intrfc.displayMap(board);
+            int player = checkWhosTurn();
+            if(player == 1){
+                this.intrfc.msgbox("Player 1 has the turn");
+            }
+            else{
+                this.intrfc.msgbox("Player 2 has the turn");
+            }
 
-	    boolean legalMove; 
-	    MapPoint point;
+            boolean legalMove; 
+            MapPoint point;
 
-	    // Get input until legal input has been received 
-	    do{
-	        point = currentPlayer.getPoint();
-	        legalMove = setMove(player, point);
-	    }while(!legalMove);
-	
-	    checkForWin(player, point);
-	    switchPlayer();
-	}
-	resolve();	
+            // Get input until legal input has been received 
+            do{
+                point = currentPlayer.getPoint();
+                legalMove = setMove(player, point);
+            }while(!legalMove);
+        
+            checkForWin(player, point);
+            switchPlayer();
+        }
+        resolve();	
     }
 
     public int checkWhosTurn(){ // Check who's turn it is

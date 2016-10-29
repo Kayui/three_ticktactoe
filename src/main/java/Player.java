@@ -6,33 +6,33 @@ public abstract class Player{
 
     public Player(){
     	this.gamesWon = 0;
-	this.gamesLost = 0;
-	this.gamesPlayed = 0;
-	this.gamesDraw = 0;
+        this.gamesLost = 0;
+        this.gamesPlayed = 0;
+        this.gamesDraw = 0;
     } 
 
     public abstract MapPoint getPoint(); // Get user input or computer input
 
     public void gameWon(){
-	gamePlayed();
-	this.gamesWon++;
+        gamePlayed();
+        this.gamesWon++;
     }
 
     public int getGamesWon(){
-	return this.gamesWon;
+        return this.gamesWon;
     }
 
     public void gameLost(){
     	gamePlayed();
-	this.gamesLost++;
+        this.gamesLost++;
     }
 
     public int getGamesLost(){
-	return this.gamesLost;
+        return this.gamesLost;
     }
     
     public int getGamesPlayed(){
-	return this.gamesPlayed;
+        return this.gamesPlayed;
     }
 
     public void gameDraw(){
@@ -45,7 +45,7 @@ public abstract class Player{
     }
 
     private void gamePlayed(){
-	this.gamesPlayed++;
+        this.gamesPlayed++;
     }
 }
 

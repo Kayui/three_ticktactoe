@@ -40,28 +40,38 @@ public class Console extends ui {
 	// difficult to maintain this code when we go 
 	// corporate
 	
-	int row = 1;
-	for (int i = 0; i < 9; i++) {
-		if (i == 0 || i % 3 == 0) {
-			if(i != 0){
-			    System.out.println("|");
-			}
-			else{
-			System.out.println("    1   2   3");
-			}
-			System.out.print("  -------------");
-			System.out.println();
-			System.out.print(row + " ");
-			row++;
+	for(int x = 0; x < 3; x++){
+		for(int y = 0; y < 3; y++){
+			int point = map.getPoint(new MapPoint(0, x, y));
+			char symbol = point == GameStatus.PLAYER1_WON ? GameStatus.CROSS : 
+			point == GameStatus.PLAYER2_WON ? GameStatus.CIRCLE : ' ';
+			System.out.print("| " + symbol + " ");
 		}
-		int point = map.getPoint(new MapPoint(0, i / map.COLS, i % map.ROWS));
-		char symbol = point == GameStatus.PLAYER1_WON ? GameStatus.CROSS : 
-		point == GameStatus.PLAYER2_WON ? GameStatus.CIRCLE : ' ';
-		System.out.print("| " + symbol + " ");
-	} 
-	System.out.println("|");
-	System.out.println("  -------------");
-
+		System.out.println("|");
+	}
+	/*
+		int row = 1;
+		for (int i = 0; i < 9; i++) {
+			if (i == 0 || i % 3 == 0) {
+				if(i != 0){
+					System.out.println("|");
+				}
+				else{
+				System.out.println("    1   2   3");
+				}
+				System.out.print("  -------------");
+				System.out.println();
+				System.out.print(row + " ");
+				row++;
+			}
+			int point = map.getPoint(new MapPoint(0, i / map.COLS, i % map.ROWS));
+			char symbol = point == GameStatus.PLAYER1_WON ? GameStatus.CROSS : 
+			point == GameStatus.PLAYER2_WON ? GameStatus.CIRCLE : ' ';
+			System.out.print("| " + symbol + " ");
+		} 
+		System.out.println("|");
+		System.out.println("  -------------");
+	*/
     }
 
     public void displayMaps(Map[] map) {
