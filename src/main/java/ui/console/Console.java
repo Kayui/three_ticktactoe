@@ -41,7 +41,7 @@ public class Console extends ui {
 	// corporate
 	
 	for(int y = 0; y < 3; y++){
-		System.out.print("  -------------");
+		System.out.println("  -------------");
 		for(int x = 0; x < 3; x++){
 			int point = map.getPoint(new MapPoint(0, x, y));
 			char symbol = point == GameStatus.PLAYER1_WON ? GameStatus.CROSS : 
@@ -50,7 +50,7 @@ public class Console extends ui {
 		}
 		System.out.println("|");
 	}
-	System.out.print("  -------------");
+	System.out.println("  -------------");
 	/*
 		int row = 1;
 		for (int i = 0; i < 9; i++) {
