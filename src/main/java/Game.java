@@ -70,7 +70,7 @@ public class Game{
     public void resolve(){ // Update the score for each player
         switch(status){
             case GameStatus.PLAYER1_WON:
-                this.intrfc.msgbox("Player 1 Wins the game!")
+                this.intrfc.msgbox("Player 1 Wins the game!");
                 p1.gameWon();
                 p2.gameLost();
                 break;
