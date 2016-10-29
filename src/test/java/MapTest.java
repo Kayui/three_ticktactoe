@@ -78,6 +78,7 @@ public class MapTest {
 	
      @Test public void testInit() {
         Map map = new Map();
+	map.init(3,3);
         assertEquals(0, map.getPoint(new MapPoint(0, 0, 0)));
 	assertEquals(0, map.getPoint(new MapPoint(0, 0, 1)));
 	assertEquals(0, map.getPoint(new MapPoint(0, 0, 2)));
@@ -87,6 +88,21 @@ public class MapTest {
 	assertEquals(0, map.getPoint(new MapPoint(0, 2, 0)));
 	assertEquals(0, map.getPoint(new MapPoint(0, 2, 1)));
 	assertEquals(0, map.getPoint(new MapPoint(0, 2, 2)));
+    }
+
+    @Test public void checkForWinWithDraw() {
+        Map map = new Map();
+	map.setMove(1, new MapPoint(0, 0, 0));
+        map.setMove(1, new MapPoint(0, 0, 1));
+        map.setMove(2, new MapPoint(0, 0, 2));
+	map.setMove(2, new MapPoint(0, 1, 0));
+	map.setMove(2, new MapPoint(0, 1, 1));
+	map.setMove(1, new MapPoint(0, 1, 2));
+	map.setMove(1, new MapPoint(0, 2, 0));
+	map.setMove(1, new MapPoint(0, 2, 1));
+	map.setMove(2, new MapPoint(0, 2, 2));
+
+        assertEquals(GameStatus.DRAW, map.checkForWin(2, new MapPoint(0, 2, 2)));
     }
 }
 

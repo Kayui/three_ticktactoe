@@ -9,7 +9,3 @@ script:
   - ./gradlew codeCoverageReport
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-test:
-    post:
-        - gradle jacocoTestReport;fi
-        - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
