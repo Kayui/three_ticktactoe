@@ -51,10 +51,10 @@ public class Game{
     public int checkWhosTurn(){ // Check who's turn it is
 	
         if(this.currentPlayer == this.p1){
-                return 1;
+            return 1;
         }
         else{
-                return 2;
+            return 2;
         }
     }
     
@@ -68,29 +68,29 @@ public class Game{
     }
 
     public void resolve(){ // Update the score for each player
-    	switch(status){
-	    case GameStatus.PLAYER1_WON:
-	    p1.gameWon();
-	    p2.gameLost();
-	    break;
-	    case GameStatus.PLAYER2_WON:
-            p2.gameWon();
-            p1.gameLost();
-            break;
-	    case GameStatus.DRAW:
-            p1.gameDraw();
-            p2.gameDraw();
-            break;
-	    default:
-	    break;
-	}
+        switch(status){
+            case GameStatus.PLAYER1_WON:
+                p1.gameWon();
+                p2.gameLost();
+                break;
+            case GameStatus.PLAYER2_WON:
+                p2.gameWon();
+                p1.gameLost();
+                break;
+            case GameStatus.DRAW:
+                p1.gameDraw();
+                p2.gameDraw();
+                break;
+            default:
+                break;
+	    }
     }
 
     public boolean setMove(int player, MapPoint point){
-	return board.setMove(player, point);	
+	    return board.setMove(player, point);	
     }
 
     public void checkForWin(int player, MapPoint point){
-	this.status = board.checkForWin(player, point);
+	    this.status = board.checkForWin(player, point);
     }
 }
