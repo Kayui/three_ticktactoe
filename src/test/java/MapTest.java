@@ -11,6 +11,12 @@ public class MapTest {
 	Map map = new Map();
         assertEquals(true, map.setMove(1, new MapPoint(0, 0, 0)));
     }
+
+    @Test public void testBadMove() {
+	Map map = new Map();
+	map.setMove(1, new MapPoint(0, 0, 0));
+	assertEquals(false, map.setMove(1, new MapPoint(0, 0, 0)));
+    }
  
     @Test public void testGetPoint() {
 	Map map = new Map();

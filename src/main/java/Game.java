@@ -7,26 +7,45 @@ public class Game{
     private ui intrfc;   
 
     public void Game(){ // Constructor
+    
     }
 
     public void init(Player p1, Player p2, ui _intrfc){ // Init and reset
         this.status = GameStatus.UNDECIDED;
         this.p1 = p1;
         this.p2 = p2;
-	this.intrfc = _intrfc;
         this.currentPlayer = p1;
+	this.intrfc = _intrfc;
         this.board = new Map();
+    }
+
+    public void start() {
 	gameLoop();
     }
 
-    public void gameLoop(){ // The game loop
+    private void gameLoop(){ // The game loop
 	while(status == GameStatus.UNDECIDED){
-	    int player = checkWhosTurn();
-	    MapPoint point = currentPlayer.getPoint();
-	    setMove(player, point);
-	    checkForWin(player, point);
+	    // Check who has the turn
 	    this.intrfc.displayMap(board);
-	    switchPlayer();	
+	    int player = checkWhosTurn();
+	    if(player == 1){
+	        this.intrfc.msgbox("Player 1 has the turn");
+	    }
+	    else{
+	        this.intrfc.msgbox("Player 2 has the turn");
+	    }
+
+	    boolean legalMove; 
+	    MapPoint point;
+
+	    // Get input until legal input has been received 
+	    do{
+	        point = currentPlayer.getPoint();
+	        legalMove = setMove(player, point);
+	    }while(!legalMove);
+	
+	    checkForWin(player, point);
+	    switchPlayer();
 	}
 	resolve();	
     }
@@ -69,8 +88,8 @@ public class Game{
 	}
     }
 
-    public void setMove(int player, MapPoint point){
-	board.setMove(player, point);	
+    public boolean setMove(int player, MapPoint point){
+	return board.setMove(player, point);	
     }
 
     public void checkForWin(int player, MapPoint point){
