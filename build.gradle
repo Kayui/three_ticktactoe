@@ -50,7 +50,7 @@ task codeCoverageReport(type:JacocoReport){
 
     reports {
         html.enabled true
-        html.destination "/var/www/html/CodeCoverageReport"
+        html.destination "html/codecoveragereport"
     }
 }
 

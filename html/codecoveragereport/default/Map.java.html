@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Map.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">three</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Map.java</span></div><h1>Map.java</h1><pre class="source lang-java linenums"><span class="fc" id="L1">public class Map{</span>
+    public static final int ROWS = 3;
+    public static final int COLS = 3;
+<span class="fc" id="L4">    protected int[][] _map = new int[ROWS][COLS]; // An int with the map</span>
+    
+    public void Map(){
+<span class="nc" id="L7">        this.init(ROWS,COLS);</span>
+<span class="nc" id="L8">    }    </span>
+
+    public void init(int width, int height){
+<span class="fc bfc" id="L11" title="All 2 branches covered.">        for(int i = 0; i &lt; width; i++){</span>
+<span class="fc bfc" id="L12" title="All 2 branches covered.">            for(int j = 0; j &lt; height; j++){</span>
+<span class="fc" id="L13">            this._map[i][j] = 0;</span>
+            }
+        }
+<span class="fc" id="L16">    }</span>
+ 
+    public int hasWon(){ // returns Gamestatus. 
+<span class="fc" id="L19">	    return 0;</span>
+    }
+
+    public boolean setMove(int player, MapPoint point){ // sets move, returns true if move is possible, else false
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (this.fieldIsEmpty(point)) {</span>
+<span class="fc" id="L24">            this._map[point.x()][point.y()] = player;</span>
+<span class="fc" id="L25">            return true;     </span>
+        }
+<span class="fc" id="L27">        return false;</span>
+    }
+
+    public int getPoint(MapPoint point){ // returns point, 0 if unoccupied 1 if player1 2 if player 2
+<span class="fc" id="L31">        return this._map[point.x()][point.y()];</span>
+    }
+
+    public boolean fieldIsEmpty(MapPoint point){ // returns point, 0 if unoccupied 1 if player1 2 if player 2
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        return getPoint(point) == 0;</span>
+    }
+
+    public boolean mapIsFull(){
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        for(int i = 0; i &lt; ROWS; i++){</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            for(int j = 0; j &lt; COLS; j++){</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">                if(_map[i][j] == 0){</span>
+<span class="fc" id="L42">                    return false;</span>
+                }
+            }
+        }
+<span class="fc" id="L46">        return true;</span>
+    }
+
+    public int checkForWin(int player, MapPoint point){
+<span class="pc bpc" id="L50" title="1 of 4 branches missed.">        boolean won = (checkForHorizontalWin(player, point.y()) || checkForVerticalWin(player, point.x()) </span>
+<span class="fc bfc" id="L51" title="All 4 branches covered.">                || checkForDiagonalWin1(player, point.y(), point.x()) || checkForDiagonalWin2(player, point.y(), point.x()));</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if(won){</span>
+<span class="fc" id="L53">            return winner(player);</span>
+        }
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if(mapIsFull()){</span>
+<span class="fc" id="L56">            return GameStatus.DRAW;</span>
+        }	
+<span class="fc" id="L58">        return GameStatus.UNDECIDED;</span>
+    }
+   
+    public boolean checkForVerticalWin(int player, int row){
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        for(int i = 0; i &lt; 3; i++){</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">            if(_map[row][i]!=player){</span>
+<span class="fc" id="L64">                return false;</span>
+            }
+        }
+<span class="fc" id="L67">        return true;</span>
+    }
+
+    public boolean checkForHorizontalWin(int player, int col){
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        for(int i = 0; i &lt; 3; i++){</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            if(_map[i][col]!=player){</span>
+<span class="fc" id="L73">                return false;</span>
+            }
+        }
+<span class="nc" id="L76">        return true;</span>
+    }
+
+    public boolean checkForDiagonalWin1(int player, int col, int row){
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        if(row == col){</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">            for(int i = 0; i &lt; 3; i++){</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">                if(_map[i][i]!=player){</span>
+<span class="fc" id="L83">                    return false;</span>
+                }
+            }
+<span class="fc" id="L86">            return true;</span>
+        }
+<span class="fc" id="L88">        return false;</span>
+    }
+
+    public boolean checkForDiagonalWin2(int player, int col, int row){
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        if((row + col) == 2){</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">                for(int i = 0; i &lt; 3; i++){</span>
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">                    if(_map[i][2 - i]!=player){</span>
+<span class="nc" id="L95">                        return false;</span>
+                    }
+                }
+<span class="fc" id="L98">            return true;</span>
+        }
+<span class="fc" id="L100">        return false;      </span>
+    }
+
+    public int winner(int player){
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        if(player == 1){</span>
+<span class="fc" id="L105">            return GameStatus.PLAYER1_WON;</span>
+        }
+        else{
+<span class="fc" id="L108">            return GameStatus.PLAYER2_WON;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
