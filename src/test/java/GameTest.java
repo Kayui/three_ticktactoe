@@ -3,14 +3,6 @@ import static org.junit.Assert.*;
 
 public class GameTest {
 
-    @Test public void testGameLoop() { //able to test?
-        Player p1 = new ComputerPlayer();
-        Player p2 = new ComputerPlayer();
-	Game game = new Game();
-	game.init(p1, p2, new Console());
-	game.start();
-    }
-
     @Test public void testCheckWhosTurn() {
 	Player p1 = new ComputerPlayer();
         Player p2 = new ComputerPlayer();
