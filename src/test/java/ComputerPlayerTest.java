@@ -9,5 +9,10 @@ public class ComputerPlayerTest {
         	assertTrue(0 <= point.x() && point.x() <= 3);
 		assertTrue(0 <= point.y() && point.y() <= 3);
         }
+	
+	@Test public void testIsHuman() {
+            ComputerPlayer p = new ComputerPlayer();
+            assertEquals(false, p.isHuman());
+        }
 
 }

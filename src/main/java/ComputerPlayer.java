@@ -5,4 +5,8 @@ public class ComputerPlayer extends Player {
 		Random rand = new Random();
 		return new MapPoint(0, rand.nextInt(3), rand.nextInt(3));
 	}
+	
+	public boolean isHuman(){ // Returns false
+            return false;
+        }
 }
