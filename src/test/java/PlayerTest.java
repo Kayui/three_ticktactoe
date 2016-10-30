@@ -4,32 +4,32 @@ import static org.junit.Assert.*;
 public class PlayerTest {
 
     @Test public void testGetGamesWon() {
-	HumanPlayer p =	new HumanPlayer();
+	HumanPlayer p =	new HumanPlayer(new Console());
         assertEquals(0, p.getGamesWon());
     }
     @Test public void testGameWon() {
-        HumanPlayer p = new HumanPlayer();
+        HumanPlayer p = new HumanPlayer(new Console());
 	p.gameWon();
         assertEquals(1, p.getGamesWon());
     }
     @Test public void testgameLost() {
-       HumanPlayer p =	new HumanPlayer();
+       HumanPlayer p =	new HumanPlayer(new Console());
        p.gameLost();
        assertEquals(1, p.getGamesLost());
     }
 
     @Test public void testGetGamesLost() {
-	HumanPlayer p =	new HumanPlayer();
+	HumanPlayer p =	new HumanPlayer(new Console());
         assertEquals(0, p.getGamesLost());
     }
 
     @Test public void testGetGamesPlayed(){
-	HumanPlayer p =	new HumanPlayer();
+	HumanPlayer p =	new HumanPlayer(new Console());
         assertEquals(0, p.getGamesPlayed());
     }
 
     @Test public void testGetGamesPlayed2(){
-        HumanPlayer p = new HumanPlayer();
+        HumanPlayer p = new HumanPlayer(new Console());
 	p.gameWon();
 	p.gameLost();
 	p.gameDraw();
@@ -37,14 +37,14 @@ public class PlayerTest {
     }
 
     @Test public void testGamesDraw(){
-        HumanPlayer p = new HumanPlayer();
+        HumanPlayer p = new HumanPlayer(new Console());
         p.gameDraw();
         p.gameDraw();
         assertEquals(2, p.getGamesDraw());
     }
 
     @Test public void testGetGamesDraw(){
-        HumanPlayer p = new HumanPlayer();
+        HumanPlayer p = new HumanPlayer(new Console());
         assertEquals(0, p.getGamesDraw());
     }
 }

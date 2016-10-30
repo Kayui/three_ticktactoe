@@ -18,15 +18,13 @@ public class Game{
     }
 
     public void start() {
-	    gameLoop();
+	gameLoop();
     }
 
     private void gameLoop(){ // The game loop
         while(status == GameStatus.UNDECIDED){
-            // Check who has the turn
-           
-            this.intrfc.displayMap(board);
-            int player = checkWhosTurn();
+            this.intrfc.displayMap(board); // Print the map
+            int player = checkWhosTurn(); // Check who has the turn
             if(player == 1){
                 this.intrfc.msgbox("Player 1 has the turn");
             }
@@ -41,11 +39,20 @@ public class Game{
             do{
                 point = currentPlayer.getPoint();
                 legalMove = setMove(player, point);
+		if(!legalMove){
+		    IllegalMoveMsg(point);
+		}
             }while(!legalMove);
             checkForWin(player, point);
             switchPlayer();    
         }
         resolve();	
+    }
+    
+    private void IllegalMoveMsg(MapPoint point){ // Print error message for illegal moves
+		this.intrfc.msgbox("The point:");
+		System.out.print((point.x() + 1) + ", " + (point.y() + 1));
+		this.intrfc.msgbox(" is not legal. Try again");
     }
 
     public int checkWhosTurn(){ // Check who's turn it is
@@ -92,16 +99,17 @@ public class Game{
 	}
     }
 
-    public boolean setMove(int player, MapPoint point){
+    public boolean setMove(int player, MapPoint point){ // Places the player's mark, returns true if the field is available
 	    return board.setMove(player, point);	
     
     }
 
-    public void checkForWin(int player, MapPoint point){
+    public void checkForWin(int player, MapPoint point){ // Checks if the game is over
         this.status = board.checkForWin(player, point);
     }
 
-    public void printScore(){
+/* Dummy code if we want to add the possibility of keeping score 
+    public void printScore(){ 
 	this.intrfc.msgbox("Player 1:");
 	System.out.println(this.p1.getGamesWon());
 	System.out.println(this.p1.getGamesLost());
@@ -114,4 +122,5 @@ public class Game{
         System.out.println(this.p2.getGamesDraw());
         System.out.println(this.p2.getGamesPlayed());	
     }
+*/
 }
