@@ -11,21 +11,21 @@ public class TicTacToe {
         Console intrfc = new Console();	
 	Menu menu = new Menu(intrfc);
 	
-	// 0 = Human vs Human
-	// 1 = Human vs Computer
-	// 2 = Computer vs Computer
-	// 3 = Exit
+	// 1 = Human vs Human
+	// 2 = Human vs Computer
+	// 3 = Computer vs Computer
+	// 4 = Exit
 	while(true){
 	    int choice = menu.mainMenu();
    	    if(choice == 1){
     	        Game game = new Game();
 		choice = menu.playerMenu();	
 	        if(choice == 1){
-	            game.init(new HumanPlayer(), new HumanPlayer(), intrfc);
+	            game.init(new HumanPlayer(intrfc), new HumanPlayer(intrfc), intrfc);
 		    game.start();
 	        }
 	        else if(choice == 2){
-	            game.init(new HumanPlayer(), new ComputerPlayer(), intrfc);
+	            game.init(new HumanPlayer(intrfc), new ComputerPlayer(), intrfc);
 		    game.start();
 	        }
 	        else if(choice == 3){
@@ -40,11 +40,5 @@ public class TicTacToe {
 	    }
 	}
     }
-	
-    public TicTacToe() {
-    }
 
-    public boolean testMethod() {
-        return true;
-    }
 }
