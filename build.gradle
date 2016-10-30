@@ -71,3 +71,7 @@ jar {
     }
     destinationDir = file("html/files")
 }
+
+clean.doFirst {
+    delete "html"
+}
