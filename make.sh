@@ -1,3 +1,3 @@
 #!/usr/bin/sh
-./versioncheck
+./versioncheck.sh
 ./gradlew
