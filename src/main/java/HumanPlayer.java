@@ -34,18 +34,18 @@ public class HumanPlayer extends Player {
 	}
 
 	public int getInputX(Scanner scan){ // Get input from point x
-            this.intrfc.msgbox("Choose Column");
+            this.intrfc.msgBox("Choose Column");
             int x = getInput(scan);
 	    return x;
         }
 
 	public int getInputY(Scanner scan){ // Get input from point y
-            this.intrfc.msgbox("Choose Row");
+            this.intrfc.msgBox("Choose Row");
             int y = getInput(scan);
 	    return y;
         }
 	
 	private void inputOutOfBounds(){ // Writes error message
-	    this.intrfc.msgbox("The input was out of bounds");
+	    this.intrfc.msgBox("The input was out of bounds");
 	}
 }

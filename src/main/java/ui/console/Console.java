@@ -3,21 +3,21 @@ import java.util.Scanner;
 public class Console extends ui {
     public Console() {}
 
-    public void msgbox(String message) { // Prints the parameter string
+    public void msgBox(String message) { // Prints the parameter string
         System.out.println(message);
     }
 
-    public boolean yesnobox(String message) { // Asks for input, returns true if input is 'y'
+    public boolean yesNoBox(String message) { // Asks for input, returns true if input is 'y'
         Scanner readInput = new Scanner(System.in);
-        this.msgbox(message);
-		this.msgbox("(Y)es or (N)o?");
+        this.msgBox(message);
+		this.msgBox("(Y)es or (N)o?");
         char input = readInput.next().charAt(0);
 		input = Character.toLowerCase(input);
 		return input  == 'y';         
     }
 
-    public int optionbox(String message, String[] options) { // Asks for integer input from the player, displays the parameter array
-		this.msgbox(message);
+    public int optionBox(String message, String[] options) { // Asks for integer input from the player, displays the parameter array
+		this.msgBox(message);
 		int i = 1;
 		Scanner readInput = new Scanner(System.in);
 		for (String option : options) {

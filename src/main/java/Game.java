@@ -26,10 +26,10 @@ public class Game{
         while(status == GameStatus.UNDECIDED){
             int player = checkWhosTurn(); // Check who has the turn
             if(player == 1){
-                this.intrfc.msgbox("Player 1 has the turn");
+                this.intrfc.msgBox("Player 1 has the turn");
             }
             else{
-                this.intrfc.msgbox("Player 2 has the turn");
+                this.intrfc.msgBox("Player 2 has the turn");
             }
 
             boolean legalMove; 
@@ -40,7 +40,7 @@ public class Game{
                 point = currentPlayer.getPoint();
                 legalMove = setMove(player, point);
 		if(!legalMove && currentPlayer.isHuman()){
-		    IllegalMoveMsg(point);
+		    illegalMoveMsg(point);
 		}
             }while(!legalMove);
 	    displayMap();
@@ -54,8 +54,8 @@ public class Game{
 	this.intrfc.displayMap(board);
     }
     
-    private void IllegalMoveMsg(MapPoint point){ // Print error message for illegal moves
-	this.intrfc.msgbox("The point: " + (point.x() + 1) + ", " + (point.y() + 1) + " is occupied. Try again");
+    private void illegalMoveMsg(MapPoint point){ // Print error message for illegal moves
+	this.intrfc.msgBox("The point: " + (point.x() + 1) + ", " + (point.y() + 1) + " is occupied. Try again");
     }
 
     public int checkWhosTurn(){ // Check who's turn it is
@@ -80,17 +80,17 @@ public class Game{
     public void resolve(){ // Update the score for each player
         switch(status){
             case GameStatus.PLAYER1_WON:
-                this.intrfc.msgbox("Player 1 Wins the game!");
+                this.intrfc.msgBox("Player 1 Wins the game!");
                 p1.gameWon();
                 p2.gameLost();
                 break;
             case GameStatus.PLAYER2_WON:
-		this.intrfc.msgbox("Player 2 Wins the game!");
+		this.intrfc.msgBox("Player 2 Wins the game!");
                 p2.gameWon();
                 p1.gameLost();
                 break;
             case GameStatus.DRAW:
-		this.intrfc.msgbox("Game ended in a draw!");
+		this.intrfc.msgBox("Game ended in a draw!");
                 p1.gameDraw();
                 p2.gameDraw();
                 break;
@@ -110,7 +110,7 @@ public class Game{
 
 /* Dummy code if we want to add the possibility of keeping score 
     public void printScore(){ 
-	this.intrfc.msgbox("Player 1:");
+	this.intrfc.msgBox("Player 1:");
 	System.out.println(this.p1.getGamesWon());
 	System.out.println(this.p1.getGamesLost());
 	System.out.println(this.p1.getGamesDraw());
