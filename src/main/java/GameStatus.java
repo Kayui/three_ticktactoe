@@ -1,4 +1,4 @@
-public class GameStatus{
+public class GameStatus{ // Contains constants describing the status of the game
     public final static char CIRCLE = 'O';
     public final static char CROSS = 'X';
     public final static int PLAYER1_WON = 1;

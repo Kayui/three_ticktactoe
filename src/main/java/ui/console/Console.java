@@ -3,11 +3,11 @@ import java.util.Scanner;
 public class Console extends ui {
     public Console() {}
 
-    public void msgbox(String message) {
+    public void msgbox(String message) { // Prints the parameter string
         System.out.println(message);
     }
 
-    public boolean yesnobox(String message) {
+    public boolean yesnobox(String message) { // Asks for input, returns true if input is 'y'
         Scanner readInput = new Scanner(System.in);
         this.msgbox(message);
 		this.msgbox("(Y)es or (N)o?");
@@ -16,9 +16,9 @@ public class Console extends ui {
 		return input  == 'y';         
     }
 
-    public int optionbox(String message, String[] options) {
+    public int optionbox(String message, String[] options) { // Asks for integer input from the player, displays the parameter array
 		this.msgbox(message);
-		int i = 0;
+		int i = 1;
 		Scanner readInput = new Scanner(System.in);
 		for (String option : options) {
 			String number = Integer.toString(i);
@@ -29,11 +29,11 @@ public class Console extends ui {
         return readInput.nextInt();
     }
 
-    public MapPoint pickOption(Map[] map) {
-		return new MapPoint(0, 0, 0);
+    public MapPoint pickOption(Map[] map) { // Should return what map the player wants if we later want to add support for different maps.
+	return new MapPoint(0, 0, 0);
     }
 
-    public void displayMap(Map map) {
+    public void displayMap(Map map) { // Prints the map
 		for(int y = 0; y < map.COLS; y++){
 			System.out.println("-------------");
 			for(int x = 0; x < map.ROWS; x++){
@@ -47,7 +47,7 @@ public class Console extends ui {
 		System.out.println("-------------");
     }
 
-    public void displayMaps(Map[] map) {
+    public void displayMaps(Map[] map) { // Displays all available maps, currently only one available. This is if we later want to add support for different maps.
         for (Map onemap : map) {
 			this.displayMap(onemap);		
 		}  
