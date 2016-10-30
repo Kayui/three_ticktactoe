@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class HumanPlayer extends Player {
     private ui intrfc;
+
     HumanPlayer(ui _interface){ // Determine what Ui is going to be used
 	intrfc = _interface;
     }
