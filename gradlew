@@ -6,6 +6,15 @@
 ##
 ##############################################################################
 
+
+if [ ! -f "gradle.properties" ]; then
+echo "buildnumber=56
+buildversion=0.2" > gradle.properties
+fi                                                                                                                                                               
+                                                                                                                                                                      
+                                                                                                                                                                       
+                                                                                                                                                                       
+                
 # Attempt to set APP_HOME
 # Resolve links: $0 may be a link
 PRG="$0"
