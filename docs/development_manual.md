@@ -29,4 +29,7 @@ The development cycle depends on __Junit__ for java unit testing and __Jacoco__ 
 these are handled internally by __Gradle__.
 
 ### A Friendly Note
-Pair programming is encouraged, do not be afraid to pair up with a fellow developer. This project is a team effort that belongs to us all.
+Pair programming is encouraged, do not be afraid to pair up with a fellow developer. This project is a team effort that belongs to us all
+
+### Extra Feature for website part of the project
+see /extra/server/readme.md for install instructions
