@@ -4,36 +4,57 @@ public class Game{
     private Player p1;
     private Player p2;
     private Player currentPlayer;
-   
-    public void Game(){ // Constructor
-    }
+    private ui intrfc;   
 
-    public void init(Player p1, Player p2){ // Init and reset
+    public void Game(){}
+
+    public void init(Player p1, Player p2, ui _intrfc){ // Init and reset
         this.status = GameStatus.UNDECIDED;
         this.p1 = p1;
         this.p2 = p2;
         this.currentPlayer = p1;
+	    this.intrfc = _intrfc;
         this.board = new Map();
     }
 
-    public void gameLoop(){ // The game loop
-	while(status == GameStatus.UNDECIDED){
-	    int player = checkWhosTurn();
-	    MapPoint point = currentPlayer.getPoint();
-	    setMove(player, point);
-	    checkForWin(player, point);
-	    switchPlayer();	
-	}
-	resolve();	
+    public void start() {
+	    gameLoop();
+    }
+
+    private void gameLoop(){ // The game loop
+        while(status == GameStatus.UNDECIDED){
+            // Check who has the turn
+            this.intrfc.displayMap(board);
+            int player = checkWhosTurn();
+            if(player == 1){
+                this.intrfc.msgbox("Player 1 has the turn");
+            }
+            else{
+                this.intrfc.msgbox("Player 2 has the turn");
+            }
+
+            boolean legalMove; 
+            MapPoint point;
+
+            // Get input until legal input has been received 
+            do{
+                point = currentPlayer.getPoint();
+                legalMove = setMove(player, point);
+            }while(!legalMove);
+        
+            checkForWin(player, point);
+            switchPlayer();
+        }
+        resolve();	
     }
 
     public int checkWhosTurn(){ // Check who's turn it is
 	
         if(this.currentPlayer == this.p1){
-                return 1;
+            return 1;
         }
         else{
-                return 2;
+            return 2;
         }
     }
     
@@ -47,29 +68,30 @@ public class Game{
     }
 
     public void resolve(){ // Update the score for each player
-    	switch(status){
-	    case GameStatus.PLAYER1_WON:
-	    p1.gameWon();
-	    p2.gameLost();
-	    break;
-	    case GameStatus.PLAYER2_WON:
-            p2.gameWon();
-            p1.gameLost();
-            break;
-	    case GameStatus.DRAW:
-            p1.gameDraw();
-            p2.gameDraw();
-            break;
-	    default:
-	    break;
-	}
+        switch(status){
+            case GameStatus.PLAYER1_WON:
+                this.intrfc.msgbox("Player 1 Wins the game!");
+                p1.gameWon();
+                p2.gameLost();
+                break;
+            case GameStatus.PLAYER2_WON:
+                p2.gameWon();
+                p1.gameLost();
+                break;
+            case GameStatus.DRAW:
+                p1.gameDraw();
+                p2.gameDraw();
+                break;
+            default:
+                break;
+	    }
     }
 
-    public void setMove(int player, MapPoint point){
-	board.setMove(player, point);	
+    public boolean setMove(int player, MapPoint point){
+	    return board.setMove(player, point);	
     }
 
     public void checkForWin(int player, MapPoint point){
-	this.status = board.checkForWin(player, point);
+	    this.status = board.checkForWin(player, point);
     }
 }
