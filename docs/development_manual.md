@@ -27,3 +27,6 @@ How to get the project to build on a fresh machine
 The development cycle depends on __Junit__ for java unit testing and __Jacoco__ for the code coverage reports.
 
 these are handled internally by __Gradle__.
+
+### A Friendly Note
+Pair programming is encouraged, do not be afraid to pair up with a fellow developer. This project is a team effort that belongs to us all.
