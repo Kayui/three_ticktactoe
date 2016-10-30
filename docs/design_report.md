@@ -1,26 +1,31 @@
 # TicTacToe: Initial design
 
 ## Description
-TicTacToe for Hugbúnaðarfræði, very nice.
-
+Our TicTacToe project for Hugbúnaðarfræði Fall 2016 Reykjavík University.
+Skúli Arnarsson
+Darri Valgarðsson
+Andri Rafn Ágústsson
+Edda Steinunn Rúnarsdóttir
+Jón Örn Arnarson
 
 
 ## Features
 //TODO Prior to implementation of the game, the team concieved various of features that were planned to implement for the project. The list of those features are listed below.
 
-### Initial feature list
-
- * Game saves number of games won by each player, number of games played and number of lost games
- * A win/lose ratio for current session
-
+### Initial feature list - Note that not all features have been implemented in the current version
+ * 1. A human can compete with another human
+ * 2. A human can compete with a computer
+ * 3. A computer can compete with another computer
+ * 4. A player can pick from a number of maps to play
+ * 5. Game saves number of games won by each player, number of games played and number of lost games
+ * 6. A player can view his score, number of wins, losses, games played, draws and win/lose ratio
+ * 7. The game can be played on a console
+ * 8. The game can be played on the web
 
 
 ## Initial code design
 
-Seven classes and descriptions of their functions were initially thought to suffice and were concieved for our project. Our original concept for the software's code is demonstrated later in Java Pseudocode made prior to implementation of the game. The team listed various coding guidelines as well
-
-### Coding guidelines
-//TODO
+Seven classes and descriptions of their functions were initially thought to suffice and were concieved for our project. Our original concept for the softwares code is demonstrated later in Java Pseudocode made prior to implementation of the game. The team listed various coding guidelines in another document called coding_conventions and should be located in the same folder as this one.
 
 ### Java pseudocode representation by class
 The following pseudocode in Java is how the team originally thought of implementing the application. This code is of course a subject to change later on as members of the team progress with the programming.
@@ -37,7 +42,7 @@ Class MapPoint
 	// on map and which point y on map
 	public MapPoint(int _map, int _pointX, int _pointY)
 
-	
+	i
 	// Returns point x on map
 	public int x()
 	
@@ -60,7 +65,7 @@ Virtual Class UI
 	// and doesn't require user input
 	public void msgbox(String message)
     	
-	// Function that displays a dialog with messages
+	/i/ Function that displays a dialog with messages
 	// and requires a yes or no input from the user
 	public boolean yesnobox(String message)
     
@@ -249,11 +254,12 @@ Class HumanPlayer extends Player
 ### Major changes to initial feature list
 //TODO Some changes were made to our initial feature list according to better estimation of the features' scope and ideas for new features. Major changes made to the feature list are listed below:
 
- * Feature 1
- 	* Removed due to...
- * Feature 2
- 	 * Added due to...
-
+ * Feature 4 - Players can choose from a number of maps
+ 	* This feature was not fully implemented because we realized it would be too much work and probably woudn't have any effect on our grade.
+ * Feature 6 - A player can view his score, number of wins, losses, games played, draws and win/lose ratio
+ 	 * This feature was not implemented due time time-constraints. We determined it was not necessary. We still keep track of all those variables but they are currently not accessable to the player.
+ * Feature 8 - The game can be played on the web
+	 * LOMMI NÁÐIÞVÍEKKI
 ### Major changes to inital code design
 //TODO Changes were made to our initial code design for simplification purposes and better class relationships. Minor changes are disregarded such as functions' naming conventions in this section, but major changes to the code design are listed below:
 
