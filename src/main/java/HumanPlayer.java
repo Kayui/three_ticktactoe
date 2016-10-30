@@ -13,6 +13,10 @@ public class HumanPlayer extends Player {
 
 	return new MapPoint(0, x-1, y-1);	
     }
+
+    public boolean isHuman(){ // Returns true
+        return true;
+    }
 	
 	public boolean pointIsValid(int point){ // Validate that the point is within bounds
 	    return (point >= 1 && point <= 3);
