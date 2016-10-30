@@ -35,8 +35,8 @@ chmod -R 755 $TICTACDIR
 
 echo "#!/bin/bash
 cd /var/$TICTACDIR
-git pull > /dev/null || rm -rf *; git clone https://github.com/threeheadedmonkeyteam/three_ticktactoe
-gradle build > /dev/null
+git pull > /dev/null || rm -rf *; rm .*; git clone https://github.com/threeheadedmonkeyteam/three_ticktactoe . 
+./gradle
 cp $TICTACDIR/html/files/* $WWW_ROOT/files/ > /dev/null
 " > /usr/bin/updateTicTacToe
 

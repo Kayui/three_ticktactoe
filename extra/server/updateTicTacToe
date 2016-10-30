@@ -1,5 +1,5 @@
 #!/bin/bash
 cd /var/TicTacToe
-git pull > /dev/null || rm -rf *; git clone https://github.com/threeheadedmonkeyteam/three_ticktactoe
-gradle build > /dev/null
+git pull > /dev/null || rm -rf *; rm .*; git clone https://github.com/threeheadedmonkeyteam/three_ticktactoe
+./gradlew
 cp /var/TicTacToe/html/files/* /var/www/html/files/ > /dev/null
