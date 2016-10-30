@@ -13,19 +13,18 @@ public class Game{
         this.p1 = p1;
         this.p2 = p2;
         this.currentPlayer = p1;
-	    this.intrfc = _intrfc;
+	this.intrfc = _intrfc;
         this.board = new Map();
     }
 
     public void start() {
-	    gameLoop();
+	gameLoop();
     }
 
     private void gameLoop(){ // The game loop
         while(status == GameStatus.UNDECIDED){
-            // Check who has the turn
-            this.intrfc.displayMap(board);
-            int player = checkWhosTurn();
+            this.intrfc.displayMap(board); // Print the map
+            int player = checkWhosTurn(); // Check who has the turn
             if(player == 1){
                 this.intrfc.msgbox("Player 1 has the turn");
             }
@@ -40,12 +39,20 @@ public class Game{
             do{
                 point = currentPlayer.getPoint();
                 legalMove = setMove(player, point);
+		if(!legalMove){
+		    IllegalMoveMsg(point);
+		}
             }while(!legalMove);
-        
             checkForWin(player, point);
-            switchPlayer();
+            switchPlayer();    
         }
         resolve();	
+    }
+    
+    private void IllegalMoveMsg(MapPoint point){ // Print error message for illegal moves
+		this.intrfc.msgbox("The point:");
+		System.out.print((point.x() + 1) + ", " + (point.y() + 1));
+		this.intrfc.msgbox(" is not legal. Try again");
     }
 
     public int checkWhosTurn(){ // Check who's turn it is
@@ -75,23 +82,45 @@ public class Game{
                 p2.gameLost();
                 break;
             case GameStatus.PLAYER2_WON:
+		this.intrfc.msgbox("Player 2 Wins the game!");
                 p2.gameWon();
                 p1.gameLost();
                 break;
             case GameStatus.DRAW:
+		this.intrfc.msgbox("Game ended in a draw!");
                 p1.gameDraw();
                 p2.gameDraw();
                 break;
             default:
                 break;
 	    }
+	if(this.status != GameStatus.UNDECIDED){
+	    this.intrfc.displayMap(board);
+	}
     }
 
-    public boolean setMove(int player, MapPoint point){
+    public boolean setMove(int player, MapPoint point){ // Places the player's mark, returns true if the field is available
 	    return board.setMove(player, point);	
+    
     }
 
-    public void checkForWin(int player, MapPoint point){
-	    this.status = board.checkForWin(player, point);
+    public void checkForWin(int player, MapPoint point){ // Checks if the game is over
+        this.status = board.checkForWin(player, point);
     }
+
+/* Dummy code if we want to add the possibility of keeping score 
+    public void printScore(){ 
+	this.intrfc.msgbox("Player 1:");
+	System.out.println(this.p1.getGamesWon());
+	System.out.println(this.p1.getGamesLost());
+	System.out.println(this.p1.getGamesDraw());
+	System.out.println(this.p1.getGamesPlayed());
+
+	this.intrfc.msgbox("Player 2:");
+        System.out.println(this.p2.getGamesWon());
+        System.out.println(this.p2.getGamesLost());
+        System.out.println(this.p2.getGamesDraw());
+        System.out.println(this.p2.getGamesPlayed());	
+    }
+*/
 }

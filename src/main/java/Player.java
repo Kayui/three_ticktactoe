@@ -13,38 +13,38 @@ public abstract class Player{
 
     public abstract MapPoint getPoint(); // Get user input or computer input
 
-    public void gameWon(){
+    public void gameWon(){ // Increments games won
         gamePlayed();
         this.gamesWon++;
     }
 
-    public int getGamesWon(){
+    public int getGamesWon(){ // Getter
         return this.gamesWon;
     }
 
-    public void gameLost(){
+    public void gameLost(){ // Increments games lost
     	gamePlayed();
         this.gamesLost++;
     }
 
-    public int getGamesLost(){
+    public int getGamesLost(){ // Getter
         return this.gamesLost;
     }
     
-    public int getGamesPlayed(){
+    public int getGamesPlayed(){ // Getter
         return this.gamesPlayed;
     }
 
-    public void gameDraw(){
+    public void gameDraw(){ // Increments games ending in a draw
         gamePlayed();
         this.gamesDraw++;
     }
 
-    public int getGamesDraw(){
+    public int getGamesDraw(){ // Getter
         return this.gamesDraw;
     }
 
-    private void gamePlayed(){
+    private void gamePlayed(){ // Increments games played
         this.gamesPlayed++;
     }
 }
