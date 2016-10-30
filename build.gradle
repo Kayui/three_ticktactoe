@@ -43,7 +43,7 @@ task codeCoverageReport(type:JacocoReport){
 
 task webJavaDoc(type: Javadoc) {
     source = sourceSets.main.allJava
-    destinationDir = file("/var/www/html/javadoc")
+    destinationDir = file("html/javadoc")
     title = "TicTacToe"
 }
 
@@ -56,5 +56,5 @@ jar {
     manifest {
         attributes 'Main-Class': mainClassName
     }
-    destinationDir = file("/var/www/html/files")
+    destinationDir = file("html/codecoveragereport")
 }
