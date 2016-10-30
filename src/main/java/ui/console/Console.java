@@ -18,7 +18,7 @@ public class Console extends ui {
 
     public int optionbox(String message, String[] options) {
 		this.msgbox(message);
-		int i = 0;
+		int i = 1;
 		Scanner readInput = new Scanner(System.in);
 		for (String option : options) {
 			String number = Integer.toString(i);

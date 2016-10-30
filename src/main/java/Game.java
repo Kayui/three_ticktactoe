@@ -13,7 +13,7 @@ public class Game{
         this.p1 = p1;
         this.p2 = p2;
         this.currentPlayer = p1;
-	    this.intrfc = _intrfc;
+	this.intrfc = _intrfc;
         this.board = new Map();
     }
 
@@ -24,6 +24,7 @@ public class Game{
     private void gameLoop(){ // The game loop
         while(status == GameStatus.UNDECIDED){
             // Check who has the turn
+           
             this.intrfc.displayMap(board);
             int player = checkWhosTurn();
             if(player == 1){
@@ -41,9 +42,8 @@ public class Game{
                 point = currentPlayer.getPoint();
                 legalMove = setMove(player, point);
             }while(!legalMove);
-        
             checkForWin(player, point);
-            switchPlayer();
+            switchPlayer();    
         }
         resolve();	
     }
@@ -75,23 +75,43 @@ public class Game{
                 p2.gameLost();
                 break;
             case GameStatus.PLAYER2_WON:
+		this.intrfc.msgbox("Player 2 Wins the game!");
                 p2.gameWon();
                 p1.gameLost();
                 break;
             case GameStatus.DRAW:
+		this.intrfc.msgbox("Game ended in a draw!");
                 p1.gameDraw();
                 p2.gameDraw();
                 break;
             default:
                 break;
 	    }
+	if(this.status != GameStatus.UNDECIDED){
+	    this.intrfc.displayMap(board);
+	}
     }
 
     public boolean setMove(int player, MapPoint point){
 	    return board.setMove(player, point);	
+    
     }
 
     public void checkForWin(int player, MapPoint point){
-	    this.status = board.checkForWin(player, point);
+        this.status = board.checkForWin(player, point);
+    }
+
+    public void printScore(){
+	this.intrfc.msgbox("Player 1:");
+	System.out.println(this.p1.getGamesWon());
+	System.out.println(this.p1.getGamesLost());
+	System.out.println(this.p1.getGamesDraw());
+	System.out.println(this.p1.getGamesPlayed());
+
+	this.intrfc.msgbox("Player 2:");
+        System.out.println(this.p2.getGamesWon());
+        System.out.println(this.p2.getGamesLost());
+        System.out.println(this.p2.getGamesDraw());
+        System.out.println(this.p2.getGamesPlayed());	
     }
 }
