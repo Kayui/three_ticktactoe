@@ -1,12 +1,12 @@
 public class MapPoint{
-    private int map;
-    private int pointX;
-    private int pointY;
+    private int map;	// Which map it points to
+    private int pointX; // Which point X on the map
+    private int pointY; // which point Y on the map
 
-    MapPoint(int _map, int _pointX, int _pointY){
-	    this.map = _map; // Which map it points to
-        this.pointX =  _pointX; // Which point X on the map
-        this.pointY = _pointY; // which point Y on the map
+    MapPoint(int _map, int _pointX, int _pointY){ // Constructor
+	this.map = _map; 
+        this.pointX =  _pointX; 
+        this.pointY = _pointY;
     }
 
     public int x() {
