@@ -18,12 +18,12 @@ public class Game{
     }
 
     public void start() {
+	displayMap(); // Print the map
 	gameLoop();
     }
 
     private void gameLoop(){ // The game loop
         while(status == GameStatus.UNDECIDED){
-            this.intrfc.displayMap(board); // Print the map
             int player = checkWhosTurn(); // Check who has the turn
             if(player == 1){
                 this.intrfc.msgbox("Player 1 has the turn");
@@ -39,20 +39,23 @@ public class Game{
             do{
                 point = currentPlayer.getPoint();
                 legalMove = setMove(player, point);
-		if(!legalMove){
+		if(!legalMove && currentPlayer.isHuman()){
 		    IllegalMoveMsg(point);
 		}
             }while(!legalMove);
+	    displayMap();
             checkForWin(player, point);
             switchPlayer();    
         }
         resolve();	
     }
+
+    private void displayMap(){
+	this.intrfc.displayMap(board);
+    }
     
     private void IllegalMoveMsg(MapPoint point){ // Print error message for illegal moves
-		this.intrfc.msgbox("The point:");
-		System.out.print((point.x() + 1) + ", " + (point.y() + 1));
-		this.intrfc.msgbox(" is not legal. Try again");
+	this.intrfc.msgbox("The point: " + (point.x() + 1) + ", " + (point.y() + 1) + " is occupied. Try again");
     }
 
     public int checkWhosTurn(){ // Check who's turn it is
@@ -94,9 +97,6 @@ public class Game{
             default:
                 break;
 	    }
-	if(this.status != GameStatus.UNDECIDED){
-	    this.intrfc.displayMap(board);
-	}
     }
 
     public boolean setMove(int player, MapPoint point){ // Places the player's mark, returns true if the field is available

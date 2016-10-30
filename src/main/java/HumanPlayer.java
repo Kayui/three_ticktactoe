@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class HumanPlayer extends Player {
     private ui intrfc;
+
     HumanPlayer(ui _interface){ // Determine what Ui is going to be used
 	intrfc = _interface;
     }
@@ -12,6 +13,10 @@ public class HumanPlayer extends Player {
 	int y = getInputY(scan);
 
 	return new MapPoint(0, x-1, y-1);	
+    }
+
+    public boolean isHuman(){ // Returns true
+        return true;
     }
 	
 	public boolean pointIsValid(int point){ // Validate that the point is within bounds
