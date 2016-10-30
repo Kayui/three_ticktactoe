@@ -25,7 +25,7 @@ repositories {
 }
 
 test {
-testLogging.showStandardStreams = true
+	testLogging.showStandardStreams = true
 }
 
 // In this section you declare the dependencies for your production and test code
@@ -46,7 +46,7 @@ task stage{
 // JaCoCo
 jacoco {
     toolVersion = "0.7.6.201602180812"
-    reportsDir = file("$buildDir/customJacocoReportDir")
+    reportsDir = file("${buildDir}/reports")
     applyTo run
 }
 
@@ -54,13 +54,18 @@ jacocoTestReport {
     reports {
         xml.enabled false
         csv.enabled false
+	html.enabled true
         html.destination "${buildDir}/jacocoHtml"
     }
 }
 
 task codeCoverageReport(type:JacocoReport){
-    executionData run
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
     sourceSets sourceSets.main
+
+    reports {
+        html.enabled true
+    }
 }
 
 run{
