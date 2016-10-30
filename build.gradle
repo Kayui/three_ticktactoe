@@ -69,5 +69,5 @@ jar {
     manifest {
         attributes 'Main-Class': mainClassName
     }
-    destinationDir = file("html/codecoveragereport")
+    destinationDir = file("html/files")
 }
