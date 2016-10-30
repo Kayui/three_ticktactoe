@@ -13,7 +13,7 @@ public class Game{
         this.p1 = p1;
         this.p2 = p2;
         this.currentPlayer = p1;
-	    this.intrfc = _intrfc;
+	this.intrfc = _intrfc;
         this.board = new Map();
     }
 
@@ -93,5 +93,13 @@ public class Game{
 
     public void checkForWin(int player, MapPoint point){
 	    this.status = board.checkForWin(player, point);
+	    if(this.status == GameStatus.PLAYER1_WON){
+		this.intrfc.displayMap(board);
+		this.intrfc.msgbox("Player 1 Wins The Game!");
+	    }
+	    else if(this.status == GameStatus.PLAYER2_WON){
+                this.intrfc.displayMap(board);
+                this.intrfc.msgbox("Player 2 Wins The Game!");
+            }
     }
 }

@@ -17,23 +17,23 @@ public class TicTacToe {
 	// 3 = Exit
 	while(true){
 	    int choice = menu.mainMenu();
-   	    if(choice == 0){
+   	    if(choice == 1){
     	        Game game = new Game();
 		choice = menu.playerMenu();	
-	        if(choice == 0){
+	        if(choice == 1){
 	            game.init(new HumanPlayer(), new HumanPlayer(), intrfc);
 		    game.start();
 	        }
-	        else if(choice == 1){
+	        else if(choice == 2){
 	            game.init(new HumanPlayer(), new ComputerPlayer(), intrfc);
 		    game.start();
 	        }
-	        else if(choice == 2){
+	        else if(choice == 3){
 	            game.init(new ComputerPlayer(), new ComputerPlayer(), intrfc);
 		    game.start();
  	        }
 	    }
-	    else if(choice == 1){
+	    else if(choice == 2){
 	        if(menu.exitMenu()){	    
 	            System.exit(0);
 	        }
