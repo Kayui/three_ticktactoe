@@ -7,7 +7,18 @@ mainClassName = "TicTacToe"
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version = "0.5"
+Properties props = new Properties()
+File propsFile = new File('gradle.properties')
+props.load(propsFile.newDataInputStream())
+String nextbuild = "$buildnumber"
+String nextversion = "$buildversion"
+
+version = nextversion.toString() + "." + nextbuild.toString()
+
+ant.propertyfile(file: file("gradle.properties")) {
+      entry(key: "buildnumber", type: "int", operation: "+", value: 1)
+  }
+
 
 repositories {
     jcenter()
