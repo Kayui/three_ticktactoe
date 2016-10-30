@@ -1,31 +1,28 @@
 # TicTacToe: Initial design
 
 ## Description
-Our TicTacToe project for Hugbúnaðarfræði Fall 2016 Reykjavík University.
-Skúli Arnarsson
-Darri Valgarðsson
-Andri Rafn Ágústsson
-Edda Steinunn Rúnarsdóttir
-Jón Örn Arnarson
+Initial design report for Late Semester ("TicTacToe") project for T-303-HUGB: Hugbúnaðar��i, due 30th of October fall 2016 by students of Reykjavík University Autho Andri Rafn Ág�stsson,
+Darri Valgar�sson, Edda Steinunn R�narsd�ttir, J�n Örn Arnarson and Sk�li Arnarsson.
 
 
 ## Features
-//TODO Prior to implementation of the game, the team concieved various of features that were planned to implement for the project. The list of those features are listed below.
+Prior to implementation of the game, the team concieved various of features that were planned to implement for the project. The list of those features are listed below. Note that not all features have been implemented in the current version.
 
-### Initial feature list - Note that not all features have been implemented in the current version
- * 1. A human can compete with another human
- * 2. A human can compete with a computer
- * 3. A computer can compete with another computer
- * 4. A player can pick from a number of maps to play
- * 5. Game saves number of games won by each player, number of games played and number of lost games
- * 6. A player can view his score, number of wins, losses, games played, draws and win/lose ratio
- * 7. The game can be played on a console
- * 8. The game can be played on the web
+### Initial feature list
+ * 1. A fully functional, playable game of the classic tictactoe
+ * 2. A player can compete with another player
+ * 3. A player can compete with the computer
+ * 4. A computer can compete with another computer
+ * 5. A player can pick from a number of maps to play
+ * 6. Game saves number of games won by each player, number of games played and number of lost games
+ * 7. A player can view his score, number of wins, losses, games played, draws and win/lose ratio
+ * 8. The game can be played on a console
+ * 9. The game can be played on the web
 
 
 ## Initial code design
 
-Seven classes and descriptions of their functions were initially thought to suffice and were concieved for our project. Our original concept for the softwares code is demonstrated later in Java Pseudocode made prior to implementation of the game. The team listed various coding guidelines in another document called coding_conventions and should be located in the same folder as this one.
+Several classes and descriptions of their functions were initially thought to suffice and were concieved for our project. Our original concept for the softwares code is demonstrated in Java Pseudocode made prior to implementation of the game. The team listed various coding guidelines in another document called coding_conventions and should be located in the same folder as this one.
 
 ### Java pseudocode representation by class
 The following pseudocode in Java is how the team originally thought of implementing the application. This code is of course a subject to change later on as members of the team progress with the programming.
@@ -42,7 +39,6 @@ Class MapPoint
 	// on map and which point y on map
 	public MapPoint(int _map, int _pointX, int _pointY)
 
-	i
 	// Returns point x on map
 	public int x()
 	
@@ -65,7 +61,7 @@ Virtual Class UI
 	// and doesn't require user input
 	public void msgbox(String message)
     	
-	/i/ Function that displays a dialog with messages
+	// Function that displays a dialog with messages
 	// and requires a yes or no input from the user
 	public boolean yesnobox(String message)
     
@@ -252,24 +248,29 @@ Class HumanPlayer extends Player
 ## Post-implementation
 
 ### Major changes to initial feature list
-//TODO Some changes were made to our initial feature list according to better estimation of the features' scope and ideas for new features. Major changes made to the feature list are listed below:
+Some changes were made to our initial feature list according to better estimation of the features' scope and ideas for new features. Major changes made to the feature list are listed below:
 
- * Feature 4 - Players can choose from a number of maps
- 	* This feature was not fully implemented because we realized it would be too much work and probably woudn't have any effect on our grade.
- * Feature 6 - A player can view his score, number of wins, losses, games played, draws and win/lose ratio
- 	 * This feature was not implemented due time time-constraints. We determined it was not necessary. We still keep track of all those variables but they are currently not accessable to the player.
- * Feature 8 - The game can be played on the web
-	 * LOMMI NÁÐIÞVÍEKKI
+ * Feature 5 - Players can choose from a number of maps
+ 	* This feature was not fully implemented due to the feature's large scope and time constraints.
+ * Feature 7 - A player can view statistics such as the player's score, number of wins, losses, games played, draws and win/lose ratio
+ 	 * This feature was not implemented due time time-constraints. The team deemed it unnecessary compared to other features. The application however keeps track of all these statistics but current version of the application is not accessable to the player.
+ * Feature 9 - The game can be played on the web
+	 * The feature is not available due to time constraints
+
 ### Major changes to inital code design
-//TODO Changes were made to our initial code design for simplification purposes and better class relationships. Minor changes are disregarded such as functions' naming conventions in this section, but major changes to the code design are listed below:
+Changes were made to our initial code design for simplification purposes and better class relationships. Minor changes are disregarded such as functions naming conventions in this section, but major changes to the code design are listed below:
 
 * The function checkDiagonalWin in map class was initially thought to check any case of diagonal win. However the function alone did not suffice and this functionality was therefore split into two functions that serve the purpose of checking any case of diagonal win
-
+* Game statuses were originally planned to implement as enum, but for simplification purposes were changed to constraints so a class containing only these constraints was added; the GameStatus class.
+* Start function added in Game class to simplify class function.
+* A couple of functions were added that solely offer feedback or error messages.
+* More functions were added to HumanPlayer class because original design of functions did not suffice, or would have been cluttered and illegible.
+* A new class simply called TicTacToe was created to offer a simple main menu for the game.
 
 
 
 ## Useful Informaton
-(Notes to selves as a team. Decide later if kept in report)
+Chapter reserved for useful information for team. A place to commit notes-to-selves and such.
 
 ### Starting a new project
 Steps to initiate a new project from the command line:

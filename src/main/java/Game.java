@@ -39,7 +39,7 @@ public class Game{
             do{
                 point = currentPlayer.getPoint();
                 legalMove = setMove(player, point);
-		if(!legalMove){
+		if(!legalMove && currentPlayer.isHuman()){
 		    IllegalMoveMsg(point);
 		}
             }while(!legalMove);
@@ -50,9 +50,7 @@ public class Game{
     }
     
     private void IllegalMoveMsg(MapPoint point){ // Print error message for illegal moves
-		this.intrfc.msgbox("The point:");
-		System.out.print((point.x() + 1) + ", " + (point.y() + 1));
-		this.intrfc.msgbox(" is not legal. Try again");
+	this.intrfc.msgbox("The point: " + (point.x() + 1) + ", " + (point.y() + 1) + " is occupied. Try again");
     }
 
     public int checkWhosTurn(){ // Check who's turn it is

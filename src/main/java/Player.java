@@ -13,6 +13,8 @@ public abstract class Player{
 
     public abstract MapPoint getPoint(); // Get user input or computer input
 
+    public abstract boolean isHuman(); // Returns true if the player is human
+
     public void gameWon(){ // Increments games won
         gamePlayed();
         this.gamesWon++;
