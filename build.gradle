@@ -19,6 +19,8 @@ ant.propertyfile(file: file("gradle.properties")) {
       entry(key: "buildnumber", type: "int", operation: "+", value: 1)
   }
 
+defaultTasks 'clean', 'build', 'webJavaDoc', 'codeCoverageReport'
+
 
 repositories {
     jcenter()
