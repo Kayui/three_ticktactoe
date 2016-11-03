@@ -26,10 +26,10 @@ public class Game{
         while(status == GameStatus.UNDECIDED){
             int player = checkWhosTurn(); // Check who has the turn
             if(player == 1){
-                this.intrfc.msgBox("X has the turn");
+                this.intrfc.msgBox("Player 1 has the turn");
             }
             else{
-                this.intrfc.msgBox("O has the turn");
+                this.intrfc.msgBox("Player 2 has the turn");
             }
 
             boolean legalMove; 
